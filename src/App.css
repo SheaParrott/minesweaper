@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  text-transform: uppercase;
 }
 
 .App-logo {
@@ -21,16 +22,26 @@
 .App-link {
   color: #61dafb;
 }
+p,
+h3 {
+  line-height: 0.3rem;
+}
 
 button {
   width: 5vw;
   height: 5vw;
   margin: 2px;
 }
-.mineSweaperRow {
+.board {
   display: flex;
   justify-content: center;
 }
 .newGame {
   width: 30vw;
+}
+.hidden {
+  visibility: hidden;
+}
+.gameNumberDisplayed {
+  font-size: 0.3rem;
 }
