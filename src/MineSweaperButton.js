@@ -1,27 +1,15 @@
 import React, { Component } from 'react'
 
 class MineSweaperButton extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      checkClick: this.check
-    }
-  }
-  gameOverRemoveClickOption = () => {
-    console.log(this.props.gameStatus)
+  click = () => {
     if (this.props.gameStatus === 'won' || this.props.gameStatus === 'lost') {
       console.log('game over')
-      this.setState({
-        checkClick: 'quitWorking'
-      })
+    } else {
+      let rowValue = this.props.row
+      let columnValue = this.props.column
+      this.props.checkBoard(rowValue, columnValue)
     }
-  }
-  check = () => {
-    this.gameOverRemoveClickOption()
-    let rowValue = this.props.row
-    let columnValue = this.props.column
-    this.props.checkBoard(rowValue, columnValue)
+    this.addClassToButton()
   }
   flag = event => {
     let rowValue = this.props.row
@@ -29,10 +17,23 @@ class MineSweaperButton extends Component {
     event.preventDefault()
     this.props.flagBoard(rowValue, columnValue)
   }
+  addClassToButton = () => {
+    console.log('trying')
+    // if (this.props.value === '_') {
+    //   return `button.blue`
+    // } else {
+    //   return ''
+    // }
+    return 'button.blue'
+  }
   render() {
     return (
       <td>
-        <button onClick={this.state.checkClick} onContextMenu={this.flag}>
+        <button
+          className={this.addClassToButton}
+          onClick={this.click}
+          onContextMenu={this.flag}
+        >
           {this.props.value}
         </button>
       </td>

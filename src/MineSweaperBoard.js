@@ -26,10 +26,6 @@ class MineSweaperBoard extends Component {
       }
     }
   }
-  changeTextOnGameStatus = () => {
-    // won/loss display text to play again
-    // make game not playable still after loss or win
-  }
   gameNumber = () => {
     Axios.post(`${this.url}/games`).then(Response => {
       console.log(Response.data)
@@ -65,7 +61,7 @@ class MineSweaperBoard extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="game">
         <h3>{this.state.game.state}</h3>
         <button className="newGame" onClick={this.gameNumber}>
           NEW GAME!

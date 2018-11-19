@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   text-transform: uppercase;
+  color: white;
 }
 
 .App-logo {
@@ -31,6 +32,15 @@ button {
   width: 5vw;
   height: 5vw;
   margin: 2px;
+  background-color: rgb(168, 168, 168);
+  text-shadow: 0 0 5px white;
+  border: 1px solid white;
+  font-weight: 700;
+  font-size: 3.5vw;
+  box-shadow: 0 0 1px white;
+}
+button:hover {
+  box-shadow: 0 0 12px red;
 }
 .board {
   display: flex;
@@ -44,4 +54,25 @@ button {
 }
 .gameNumberDisplayed {
   font-size: 0.3rem;
+}
+h1 {
+  background-image: linear-gradient(rgb(0, 0, 0), Rgba(0, 0, 0, 0.5));
+  color: red;
+  margin: 0;
+  padding: 1rem;
+  text-shadow: 0 0 1px yellow;
+}
+.game {
+  background-color: rgb(85, 85, 85);
+  border: 15px solid black;
+}
+button.red {
+  color: red;
+}
+button.green {
+  color: green;
+}
+button.blue {
+  color: blue;
+  background-image: rgb(182, 0, 0);
 }
