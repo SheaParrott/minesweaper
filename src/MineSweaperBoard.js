@@ -9,6 +9,8 @@ class MineSweaperBoard extends Component {
     super(props)
 
     this.state = {
+      difficulty: 0,
+      playing: false,
       game: {
         id: 'XX',
         board: [
@@ -26,17 +28,25 @@ class MineSweaperBoard extends Component {
       }
     }
   }
+
   gameNumber = () => {
-    Axios.post(`${this.url}/games`).then(Response => {
+    Axios.post(`${this.url}/games`, {
+      difficulty: this.state.difficulty
+    }).then(Response => {
       console.log(Response.data)
 
       this.setState({
+        playing: true,
         game: Response.data
       })
     })
   }
 
   checkBoard = (row, column) => {
+    if (!this.state.playing) {
+      return
+    }
+
     Axios.post(`${this.url}/games/${this.state.game.id}/check`, {
       row: row,
       col: column
@@ -48,7 +58,9 @@ class MineSweaperBoard extends Component {
     })
   }
   flagBoard = (row, column) => {
-    console.log('flagBoardTest')
+    if (!this.state.playing) {
+      return
+    }
     Axios.post(`${this.url}/games/${this.state.game.id}/flag`, {
       row: row,
       col: column
@@ -59,10 +71,20 @@ class MineSweaperBoard extends Component {
       })
     })
   }
+  chooseDifficulty = event => {
+    this.setState({
+      difficulty: parseInt(event.target.value)
+    })
+  }
   render() {
     return (
-      <div className="game">
+      <div>
         <h3>{this.state.game.state}</h3>
+        <select value={this.state.difficulty} onChange={this.chooseDifficulty}>
+          <option value="0">Easy</option>
+          <option value="1">Intermediate</option>
+          <option value="2">Expert</option>
+        </select>
         <button className="newGame" onClick={this.gameNumber}>
           NEW GAME!
         </button>
