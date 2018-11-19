@@ -39,6 +39,7 @@ class MineSweaperBoard extends Component {
       })
     })
   }
+
   checkBoard = (row, column) => {
     Axios.post(`${this.url}/games/${this.state.game.id}/check`, {
       row: row,
