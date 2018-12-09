@@ -12,6 +12,7 @@ REACT:<br/>
  - guard claus
  - how powerful the use of map() can be, used to create the static board and then used for the board from the API<br/>
  - select box<br/>
+ - how to properly use emoji's in code with '<span>' <br/>
 
 <br/> 
 <br/>
